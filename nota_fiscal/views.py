@@ -342,8 +342,7 @@ class NotaFiscalView(View):
                 'cStat': cStat, 
                 'xMotivo': xMotivo,
                 'chNFe': chave_nota_fiscal,
-                'nProt': numero_protocolo,
-                'num_recibo': num_recibo
+                'nProt': numero_protocolo
                 }, 
             status=404)
     
@@ -412,6 +411,9 @@ class NotaFiscalConsultarView(View):
             data = json.loads(request.body.decode('utf-8'))
         except json.JSONDecodeError as e:
             return JsonResponse({'error': f'Erro ao decodificar JSON: {str(e)}'}, status=400)
+        
+        
+        print(data)
         
         # extraindo o tipo de ambiente
         tipo_ambiente = data.get('tipo_ambiente', True) 
