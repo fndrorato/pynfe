@@ -526,7 +526,7 @@ class NotaFiscalConsultarView(View):
                     with open(caminho_arquivo, 'w', encoding='utf-8') as file:
                         file.write(xml_content) 
                         
-                    info_protocolo = get_info_protocolo(nfe_proc) 
+                    info_protocolo = get_info_protocolo(xml_content) 
                     
                     if info_protocolo is not None:
                         numero_protocolo = info_protocolo['nProt']  
