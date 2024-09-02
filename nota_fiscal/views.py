@@ -464,7 +464,7 @@ class NotaFiscalConsultarView(View):
                     if info_protocolo is not None:
                         numero_protocolo = info_protocolo['nProt']
                         nota_fiscal.numero_protocolo = numero_protocolo
-                        nota_fiscal.save
+                        nota_fiscal.save()
 
                     # Escrevendo o conteúdo do XML no arquivo
                     caminho_arquivo = Path(settings.MEDIA_ROOT) / 'xml' / xml_nome_arquivo
@@ -474,11 +474,21 @@ class NotaFiscalConsultarView(View):
                     nota_fiscal.xml = nfe_proc   
                     nota_fiscal.xml_file_name  = xml_nome_arquivo
                     nota_fiscal.status = cStat
-                    nota_fiscal.save  
+                    nota_fiscal.save()  
                     
                     nota_fiscal = NotaFiscalModel.objects.get(chave_nota_fiscal=chave_acesso)
                 else:
-                    print('O xml nao começa com Nfe')              
+                    print('O xml nao começa com Nfe')   
+                    xml_get_info = """<protNFe xmlns="http://www.portalfiscal.inf.br/nfe" xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="4.00"><infProt><tpAmb>1</tpAmb><verAplic>SP_NFE_PL009_V4</verAplic><chNFe>35240821277052000180550010000000461549586434</chNFe><dhRecbto>2024-08-31T08:02:21-03:00</dhRecbto><nProt>135241923712032</nProt><digVal>XrSxG4y1xUsyXsEtGwH6D8VNnGA=</digVal><cStat>100</cStat><xMotivo>Autorizado o uso da NF-e</xMotivo></infProt></protNFe>"""           
+                    # Converter o XML para um dicionário
+                    data = xmltodict.parse(xml_prot)
+
+                    # Acessar a informação dentro de infProt
+                    numero_protocolo = data['protNFe']['infProt']['nProt'] 
+                    
+                    if nota_fiscal.numero_protocolo is None or nota_fiscal.numero_protocolo == '':
+                        nota_fiscal.numero_protocolo = numero_protocolo  
+                        nota_fiscal.save()                 
 
                 if nota_fiscal.xml_file_name:
                     xml_file = Path(settings.MEDIA_ROOT) / 'xml' / nota_fiscal.xml_file_name
@@ -521,7 +531,7 @@ class NotaFiscalConsultarView(View):
                     if info_protocolo is not None:
                         numero_protocolo = info_protocolo['nProt']  
                         nota_fiscal.numero_protocolo = numero_protocolo
-                        nota_fiscal.save                                              
+                        nota_fiscal.save()                                              
                         
                     # Caminho completo para salvar o PDF
                     caminho_arquivo = Path(settings.MEDIA_ROOT) / 'danfe' / danfe_nome_arquivo
