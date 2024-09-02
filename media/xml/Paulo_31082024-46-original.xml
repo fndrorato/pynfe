@@ -1,0 +1,167 @@
+<nfeProc xmlns="http://www.portalfiscal.inf.br/nfe" versao="4.00"><NFe xmlns="http://www.portalfiscal.inf.br/nfe" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+  <infNFe versao="4.00" Id="NFe35240821277052000180550010000000461549586434">
+    <ide>
+      <cUF>35</cUF>
+      <cNF>54958643</cNF>
+      <natOp>VENDA DE MERCADORIA ADQUIRIDA</natOp>
+      <mod>55</mod>
+      <serie>1</serie>
+      <nNF>46</nNF>
+      <dhEmi>2024-08-31T08:01:20-03:00</dhEmi>
+      <dhSaiEnt>2024-08-31T08:01:20-03:00</dhSaiEnt>
+      <tpNF>1</tpNF>
+      <idDest>1</idDest>
+      <cMunFG>3542602</cMunFG>
+      <tpImp>1</tpImp>
+      <tpEmis>1</tpEmis>
+      <cDV>4</cDV>
+      <tpAmb>1</tpAmb>
+      <finNFe>1</finNFe>
+      <indFinal>1</indFinal>
+      <indPres>1</indPres>
+      <procEmi>0</procEmi>
+      <verProc>PyNFe 0.4</verProc>
+    </ide>
+    <emit>
+      <CNPJ>21277052000180</CNPJ>
+      <xNome>AYLTON SEISHUM HANASHIRO COLCHOES ME</xNome>
+      <xFant>AYLTON ME</xFant>
+      <enderEmit>
+        <xLgr>RUA ALFREDO MARQUES DE AGUIAR</xLgr>
+        <nro>85</nro>
+        <xBairro>Jardim Caicara</xBairro>
+        <cMun>3542602</cMun>
+        <xMun>Registro</xMun>
+        <UF>SP</UF>
+        <CEP>11900000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderEmit>
+      <IE>574055903116</IE>
+      <CRT>1</CRT>
+    </emit>
+    <dest>
+      <CPF>05692967812</CPF>
+      <xNome>MILTON DIAS DA SILVA</xNome>
+      <enderDest>
+        <xLgr>Sitio Cachoeirinha</xLgr>
+        <nro>Sem Numero</nro>
+        <xBairro>Vista Grande</xBairro>
+        <cMun>3529906</cMun>
+        <xMun>Miracatu</xMun>
+        <UF>SP</UF>
+        <CEP>11850000</CEP>
+        <cPais>1058</cPais>
+        <xPais>Brasil</xPais>
+      </enderDest>
+      <indIEDest>9</indIEDest>
+    </dest>
+    <det nItem="1">
+      <prod>
+        <cProd>927</cProd>
+        <cEAN>SEM GTIN</cEAN>
+        <xProd>Purificador Alcaline Max Crystal Classe A - 12 Litros UNICO</xProd>
+        <NCM>84212100</NCM>
+        <CFOP>5120</CFOP>
+        <uCom>UN</uCom>
+        <qCom>1</qCom>
+        <vUnCom>2400.0000000000</vUnCom>
+        <vProd>2400.00</vProd>
+        <cEANTrib>SEM GTIN</cEANTrib>
+        <uTrib>UN</uTrib>
+        <qTrib>1</qTrib>
+        <vUnTrib>2400.0000000000</vUnTrib>
+        <indTot>1</indTot>
+      </prod>
+      <imposto>
+        <ICMS>
+          <ICMSSN102>
+            <orig>0</orig>
+            <CSOSN>102</CSOSN>
+          </ICMSSN102>
+        </ICMS>
+        <PIS>
+          <PISNT>
+            <CST>07</CST>
+          </PISNT>
+        </PIS>
+        <COFINS>
+          <COFINSNT>
+            <CST>07</CST>
+          </COFINSNT>
+        </COFINS>
+      </imposto>
+    </det>
+    <total>
+      <ICMSTot>
+        <vBC>0.00</vBC>
+        <vICMS>0.00</vICMS>
+        <vICMSDeson>0.00</vICMSDeson>
+        <vFCP>0.00</vFCP>
+        <vBCST>0.00</vBCST>
+        <vST>0.00</vST>
+        <vFCPST>0.00</vFCPST>
+        <vFCPSTRet>0.00</vFCPSTRet>
+        <vProd>2400.00</vProd>
+        <vFrete>0.00</vFrete>
+        <vSeg>0.00</vSeg>
+        <vDesc>0.00</vDesc>
+        <vII>0.00</vII>
+        <vIPI>0.00</vIPI>
+        <vIPIDevol>0.00</vIPIDevol>
+        <vPIS>0.00</vPIS>
+        <vCOFINS>0.00</vCOFINS>
+        <vOutro>0.00</vOutro>
+        <vNF>2400.00</vNF>
+      </ICMSTot>
+    </total>
+    <transp>
+      <modFrete>9</modFrete>
+    </transp>
+    <pag>
+      <detPag>
+        <tPag>01</tPag>
+        <vPag>2400.00</vPag>
+      </detPag>
+    </pag>
+    <infRespTec>
+      <CNPJ>23022235000180</CNPJ>
+      <xContato>FERNANDO RORATO</xContato>
+      <email>fernando@frsolucoes.com.br</email>
+      <fone>1338214014</fone>
+    </infRespTec>
+  </infNFe>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+      <Reference URI="#NFe35240821277052000180550010000000461549586434">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+          <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+        <DigestValue>XrSxG4y1xUsyXsEtGwH6D8VNnGA=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>OXyqk8iqVOceSUgoe9AK/P+2P1j+Rmc7wVKoiXJm+JIINE3EUSJljE4ThLqqX05BA9ToFX2miOisETck5TKS0YYoCPDn1J6MPuV1ktT6JIe5hapxIrTmoAF5vJL175cRRgnvJkThZCqvyqZ1LBca45DHgjSighxWm6S4ToIxC8SHk257yJl4m6sw8UYK4na8jqZ6hkL1A2nU220vkgvX1MO0L6yAGwbFuewUtJ4H5Wtk6fYsBp7Vz+frGObyn+kX9TGVxPTn02VqptmsEpwuE+jUzJ8XoBRzaQajOcaRZIuFxBB043m3sJic+LzU2FHWPsHOLvM9NYEl4A5wJZZGoA==</SignatureValue>
+    <KeyInfo>
+      <X509Data>
+        <X509Certificate>MIIIGDCCBgCgAwIBAgIQQRh+mmd8BvlGtLyLcKlJ8TANBgkqhkiG9w0BAQsFADB4MQswCQYDVQQGEwJCUjETMBEGA1UEChMKSUNQLUJyYXNpbDE2MDQGA1UECxMtU2VjcmV0YXJpYSBkYSBSZWNlaXRhIEZlZGVyYWwgZG8gQnJhc2lsIC0gUkZCMRwwGgYDVQQDExNBQyBDZXJ0aXNpZ24gUkZCIEc1MB4XDTI0MDEyNjIxNTQyNFoXDTI1MDEyNTIxNTQyNFowgfsxCzAJBgNVBAYTAkJSMRMwEQYDVQQKDApJQ1AtQnJhc2lsMQswCQYDVQQIDAJTUDERMA8GA1UEBwwIUmVnaXN0cm8xEzARBgNVBAsMClByZXNlbmNpYWwxFzAVBgNVBAsMDjU1ODU5NDI1MDAwMTQyMTYwNAYDVQQLDC1TZWNyZXRhcmlhIGRhIFJlY2VpdGEgRmVkZXJhbCBkbyBCcmFzaWwgLSBSRkIxFjAUBgNVBAsMDVJGQiBlLUNOUEogQTExOTA3BgNVBAMMMEFZTFRPTiBTRUlTSFVNIEhBTkFTSElSTyBDT0xDSE9FUzoyMTI3NzA1MjAwMDE4MDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKiyW66EyIvbx2V62nuLJleMJjWgVSoWYLkuQl+4ubvW1E7uQPUTxBcp9xWfuXpAi9F/QX0eX/B32F4xWBeld7ygpQW/8Ya9d2/BFsENRCMlC4ahWjhL1aSdbNze9ZuNjvbwPDyXEj9DiWvHoBIj852qmG4h8Dk144ZxMUF1ecXnsvjs1FSgzVY2CsxRsqOvLZ3J+R86hwWxqlsuXDn1XKFkXwBg4KEsoT/8BGNSZOQ4rhhdq4LR6PfQP0xyDG4LZfjJ/p3Q2c5SDi5f2XF2kSOpqv8NoZKNamVjFSlT2ruaxDkt93vgiitRq61koszDQDfP4PMCLXKQZTkoi0sRfa8CAwEAAaOCAxgwggMUMIHHBgNVHREEgb8wgbygPQYFYEwBAwSgNAQyMTIwODE5OTI0MDc1MzUyMTg4MTAwMDAwMDAwMDAwMDAwMDAwMzAyNjQ3MzRYU1NQU1CgIwYFYEwBAwKgGgQYQVlMVE9OIFNFSVNIVU0gSEFOQVNISVJPoBkGBWBMAQMDoBAEDjIxMjc3MDUyMDAwMTgwoBcGBWBMAQMHoA4EDDAwMDAwMDAwMDAwMIEicGF1bG9oYW5hc2hpcm9AZXF1aXBla2FpemVuLmNvbS5icjAJBgNVHRMEAjAAMB8GA1UdIwQYMBaAFFN9f52+0WHQILran+OJpxNzWM1CMH8GA1UdIAR4MHYwdAYGYEwBAgEMMGowaAYIKwYBBQUHAgEWXGh0dHA6Ly9pY3AtYnJhc2lsLmNlcnRpc2lnbi5jb20uYnIvcmVwb3NpdG9yaW8vZHBjL0FDX0NlcnRpc2lnbl9SRkIvRFBDX0FDX0NlcnRpc2lnbl9SRkIucGRmMIG8BgNVHR8EgbQwgbEwV6BVoFOGUWh0dHA6Ly9pY3AtYnJhc2lsLmNlcnRpc2lnbi5jb20uYnIvcmVwb3NpdG9yaW8vbGNyL0FDQ2VydGlzaWduUkZCRzUvTGF0ZXN0Q1JMLmNybDBWoFSgUoZQaHR0cDovL2ljcC1icmFzaWwub3V0cmFsY3IuY29tLmJyL3JlcG9zaXRvcmlvL2xjci9BQ0NlcnRpc2lnblJGQkc1L0xhdGVzdENSTC5jcmwwDgYDVR0PAQH/BAQDAgXgMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDBDCBrAYIKwYBBQUHAQEEgZ8wgZwwXwYIKwYBBQUHMAKGU2h0dHA6Ly9pY3AtYnJhc2lsLmNlcnRpc2lnbi5jb20uYnIvcmVwb3NpdG9yaW8vY2VydGlmaWNhZG9zL0FDX0NlcnRpc2lnbl9SRkJfRzUucDdjMDkGCCsGAQUFBzABhi1odHRwOi8vb2NzcC1hYy1jZXJ0aXNpZ24tcmZiLmNlcnRpc2lnbi5jb20uYnIwDQYJKoZIhvcNAQELBQADggIBAAxMVj581/jajczJ9KuDw+M/k339W+IEaRFqo82aGNOCfqxYSFTaCGWNtYFHOXGmqJYWBCyGHNNRv77OOIPhPaxLEVJrYcvQb6G4i4KASNaTxjBLog2KATeSQK+gx3Zl+LiuFk8yRU87SBuPvJWoLMFHmZKbjRDCjqkJiSAG13kE1tulECwOYvZrMFDOXZxPhSSubohRxqIB9ceyBYiVO9+DMHNfHB0IppNkw6ZUcZSSK8KhluM88X7kx8dmjOLjPE3m24tb06jFNYqAs7Hwkk/zPc3JUSGQDEIEidxEk9cJQgxdrGzkQv2CeNnfn0Yf4hHwgz52Xw5iiqJVvj6OU/vRDTFUJWyD+aaGBpkAHZlQ+YCXjduTYsftKaSk5VHy0BoUKAlpV6cwMb+WM5pk/BGWuXFoAjIa/bZ7Li1NUbteR5z8PHg3iBNh93fAYEz7uC8e/1Yqk1gChf8sGyABGCNM8OocSPdwyGfg0BNepKdCY+iaqXXM4zJQoBBjLtZVfSR3sStaltGVQtctyy3VT2YP5gKkFlJJlWaoFwH63mx1UK3r3HlCypZB+XF3BSBPOAZaHmuUX+3hMi7gXJDL0DWP02uvWCLmh8mmbeCImVv1W/wfWzgiPsrLMg5PvSPCELHVd5y9fa9mSVclexWu/QEAjlR+B1pPtLtkbv0DzkOJ</X509Certificate>
+      </X509Data>
+    </KeyInfo>
+  </Signature>
+</NFe>
+<protNFe xmlns="http://www.portalfiscal.inf.br/nfe" xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" versao="4.00">
+<infProt>
+<tpAmb>1</tpAmb>
+<verAplic>SP_NFE_PL009_V4</verAplic>
+<chNFe>35240821277052000180550010000000461549586434</chNFe>
+<dhRecbto>2024-08-31T08:02:21-03:00</dhRecbto>
+<nProt>135241923712032</nProt>
+<digVal>XrSxG4y1xUsyXsEtGwH6D8VNnGA=</digVal>
+<cStat>100</cStat>
+<xMotivo>Autorizado o uso da NF-e</xMotivo>
+</infProt>
+</protNFe>
+</nfeProc>
