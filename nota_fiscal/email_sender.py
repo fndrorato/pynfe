@@ -24,7 +24,7 @@ class EmailSender:
         
     def get_attachments(self):
         try:
-            nota_fiscal = NotaFiscal.objects.get(chave=self.chave_nota_fiscal)
+            nota_fiscal = NotaFiscal.objects.get(chave_nota_fiscal=self.chave_nota_fiscal)
             xml_file = Path(settings.MEDIA_ROOT) / 'xml' / nota_fiscal.xml_file_name
             pdf_file = Path(settings.MEDIA_ROOT) / 'danfe' / nota_fiscal.pdf_file_name
             return [xml_file, pdf_file]
@@ -60,7 +60,8 @@ class EmailSender:
 
     def send_nota_fiscal_email(self):
         try:
-            nota_fiscal = NotaFiscal.objects.get(chave=self.chave_nota_fiscal)
+            print(self.chave_nota_fiscal)
+            nota_fiscal = NotaFiscal.objects.get(chave_nota_fiscal=self.chave_nota_fiscal)
             certificado = Certificado.objects.get(cnpj=self.cnpj)
             subject = f'Nota Fiscal Emitida: {nota_fiscal.numero}'
             message = f"""

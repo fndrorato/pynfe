@@ -20,7 +20,7 @@ class NotaFiscal(models.Model):
     
 class CartaCorrecao(models.Model):
     cnpj = models.ForeignKey(Certificado, on_delete=models.CASCADE, related_name='emissor')
-    chave_nota_Fiscal = models.ForeignKey(NotaFiscal, on_delete=models.CASCADE, to_field='chave_nota_fiscal')
+    chave_nota_fiscal = models.ForeignKey(NotaFiscal, on_delete=models.CASCADE, to_field='chave_nota_fiscal')
     data_emissao = models.DateTimeField()
     n_seq_evento = models.IntegerField()
     correcao = models.CharField(max_length=255) 
@@ -36,7 +36,7 @@ class CartaCorrecao(models.Model):
         
 class NotaCancelada(models.Model):
     cnpj = models.ForeignKey(Certificado, on_delete=models.CASCADE, related_name='emissorcancelada')
-    chave_nota_Fiscal = models.ForeignKey(NotaFiscal, on_delete=models.CASCADE, to_field='chave_nota_fiscal')
+    chave_nota_fiscal = models.ForeignKey(NotaFiscal, on_delete=models.CASCADE, to_field='chave_nota_fiscal')
     protocolo = models.CharField(max_length=50)
     data_emissao = models.DateTimeField()
     justificativa = models.CharField(max_length=255) 

@@ -10,15 +10,15 @@ class NotaFiscalAdmin(admin.ModelAdmin):
     
 @admin.register(CartaCorrecao)
 class CartaCorrecaoAdmin(admin.ModelAdmin):
-    list_display = ('chave_nota_Fiscal', 'cnpj', 'data_emissao', 'correcao', 'n_seq_evento', 'status')
-    search_fields = ('chave_nota_Fiscal', 'cnpj', 'correcao', 'status')
+    list_display = ('chave_nota_fiscal', 'cnpj', 'data_emissao', 'correcao', 'n_seq_evento', 'status')
+    search_fields = ('chave_nota_fiscal', 'cnpj', 'correcao', 'status')
     list_filter = ('data_emissao', 'cnpj', 'status', )
     date_hierarchy = 'data_emissao'   
     
 @admin.register(NotaCancelada)
 class NotaCanceladaAdmin(admin.ModelAdmin):
-    list_display = ('chave_nota_Fiscal', 'cnpj', 'data_emissao', 'justificativa', 'status')
-    search_fields = ('chave_nota_Fiscal', 'cnpj', 'justificativa', 'status')
+    list_display = ('chave_nota_fiscal', 'cnpj', 'data_emissao', 'justificativa', 'status')
+    search_fields = ('chave_nota_fiscal', 'cnpj', 'justificativa', 'status')
     list_filter = ('data_emissao', 'cnpj', 'status', )
     date_hierarchy = 'data_emissao'      
 
