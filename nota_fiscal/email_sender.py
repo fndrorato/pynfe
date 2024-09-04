@@ -3,6 +3,7 @@ from pathlib import Path
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.http import JsonResponse
+from django.utils import timezone
 from certificados.models import Certificado, Email, EmailEnviado
 from nota_fiscal.models import NotaFiscal
 
@@ -68,9 +69,30 @@ class EmailSender:
             Chave da Nota Fiscal: {self.chave_nota_fiscal}
             """
             attachments = self.get_attachments()
-            return self.send_email(subject, message, attachments)
+            email_result = self.send_email(subject, message, attachments)
+            # Salvar no model EmailEnviado
+            email_enviado = EmailEnviado.objects.create(
+                cnpj=certificado,
+                numero=nota_fiscal.numero,
+                chave=self.chave_nota_fiscal,
+                result=email_result["success"],
+                message=email_result["message"],
+                created_at=timezone.now()
+            )
+            email_enviado.save()
+
+            return JsonResponse(email_result)
         except NotaFiscal.DoesNotExist:
+            error_message = "Nota fiscal não encontrada para a chave fornecida."
+            EmailEnviado.objects.create(
+                cnpj=Certificado.objects.get(cnpj=self.cnpj),
+                numero="",
+                chave=self.chave_nota_fiscal,
+                result=False,
+                message=error_message,
+                created_at=timezone.now()
+            )
             return JsonResponse({
                 "success": False,
-                "message": "Nota fiscal não encontrada para a chave fornecida."
+                "message": error_message
             })

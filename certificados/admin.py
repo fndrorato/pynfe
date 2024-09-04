@@ -11,8 +11,8 @@ class EmailAdmin(admin.ModelAdmin):
     search_fields = ('cnpj__cnpj', 'email')  # Campos de pesquisa
 
 class EmailEnviadoAdmin(admin.ModelAdmin):
-    list_display = ('cnpj', 'numero', 'chave', 'emails', 'created_at')
-    search_fields = ('cnpj__cnpj', 'numero', 'chave', 'emails')
+    list_display = ('cnpj', 'numero', 'chave', 'result', 'created_at')
+    search_fields = ('cnpj__cnpj', 'numero', 'chave', 'result')
     list_filter = ('created_at',)  # Filtros na barra lateral
 
 admin.site.register(Email, EmailAdmin)

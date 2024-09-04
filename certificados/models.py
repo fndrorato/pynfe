@@ -34,7 +34,8 @@ class EmailEnviado(models.Model):
     cnpj = models.ForeignKey('Certificado', on_delete=models.CASCADE)
     numero = models.CharField(max_length=255)
     chave = models.CharField(max_length=255)
-    emails = models.CharField(max_length=255)
+    result = models.BooleanField(default=False)
+    message = models.TextField(default='')
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
