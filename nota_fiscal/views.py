@@ -229,6 +229,9 @@ class NotaFiscalView(View):
 
             # Caminho completo para salvar o PDF
             caminho_arquivo = Path(settings.MEDIA_ROOT) / 'danfe' / danfe_nome_arquivo
+            # Construir a URL completa
+            full_danfe_url = request.build_absolute_uri(f'/media/danfe/{danfe_nome_arquivo}')
+            
 
             if info_protocolo['cStat'] == 100:
                 # Gerar o DANFE e salvar o PDF
@@ -266,7 +269,7 @@ class NotaFiscalView(View):
                 'cStat': info_protocolo['cStat'],
                 'chNFe': info_protocolo['chNFe'],
                 'nProt': info_protocolo['nProt'],
-                'danfe': danfe_nome_arquivo
+                'danfe': full_danfe_url
                 }, 
             status=200)
         # em caso de erro o retorno será o xml de resposta da SEFAZ + NF-e enviada
@@ -549,11 +552,13 @@ class NotaFiscalConsultarView(View):
                 print(f"Nota Fiscal com chave {chave_acesso} não encontrada.")
         
         # Exibindo os valores
+        # Construir a URL completa
+        full_danfe_url = request.build_absolute_uri(f'/media/danfe/{danfe_url}')        
         return JsonResponse({
             'cStat': cStat, 
             'xMotivo': xMotivo,
             'nProt': numero_protocolo,
-            'danfe': danfe_url
+            'danfe': full_danfe_url
             }, 
         status=http_status)
         
@@ -708,13 +713,16 @@ class NotaFiscalCCeView(View):
             'xml_file': xml_nome_arquivo,
             'pdf_file': pdf_nome_arquivo
         }  
-        cce = salvar_carta_correcao(data_carta_correcao)                                   
+        cce = salvar_carta_correcao(data_carta_correcao)  
+        
+        # Construir a URL completa
+        full_danfe_url = request.build_absolute_uri(f'/media/danfe/{pdf_url}')                                            
         
         # Exibindo os valores
         return JsonResponse({
             'cStat': cStat, 
             'xMotivo': xMotivo,
-            'pdf': pdf_url
+            'pdf': full_danfe_url
             }, 
         status=http_status)
 
