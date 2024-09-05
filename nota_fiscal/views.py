@@ -265,6 +265,11 @@ class NotaFiscalView(View):
                 info_protocolo['xMotivo'], 
                 xml_content
             )
+            
+            # Processo de enviar a nota por e-mail
+            email_sender = EmailSender(cnpj_emitente, info_protocolo['chNFe'])
+            resultado = email_sender.send_nota_fiscal_email()            
+            
             return JsonResponse({
                 'xMotivo': info_protocolo['xMotivo'],
                 'cStat': info_protocolo['cStat'],

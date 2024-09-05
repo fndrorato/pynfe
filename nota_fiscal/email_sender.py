@@ -60,7 +60,6 @@ class EmailSender:
 
     def send_nota_fiscal_email(self):
         try:
-            print(self.chave_nota_fiscal)
             nota_fiscal = NotaFiscal.objects.get(chave_nota_fiscal=self.chave_nota_fiscal)
             certificado = Certificado.objects.get(cnpj=self.cnpj)
             subject = f'Nota Fiscal Emitida: {nota_fiscal.numero}'
