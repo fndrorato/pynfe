@@ -211,8 +211,8 @@ class NotaFiscalView(View):
                 file.write(xml_content)
 
             # # Load XML Content
-            with open(caminho_arquivo, "r", encoding="utf8") as file:
-                xml_content = file.read()          
+            # with open(caminho_arquivo, "r", encoding="utf8") as file:
+            #     xml_content = file.read()          
             
             # Converter o XML da NF-e para um dicionário
             nfe_dict = xmltodict.parse(xml_content)
