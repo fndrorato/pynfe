@@ -6,4 +6,5 @@ logs/
 media/certificados/
 media/danfe/
 media/xml/
+static/
 db.sqlite3
