@@ -242,7 +242,6 @@ class NotaFiscalView(View):
             # Construir a URL completa
             full_danfe_url = request.build_absolute_uri(f'/media/danfe/{danfe_nome_arquivo}')
             
-
             if info_protocolo['cStat'] == 100:
                 # Gerar o DANFE e salvar o PDF
                 danfe = Danfe(xml=xml_content)
