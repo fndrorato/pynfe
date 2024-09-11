@@ -62,30 +62,39 @@ def consulta_nota_fiscal(cnpj, chave_acesso, homologacao = True):
     uf = certificado.uf
 
     con = ComunicacaoSefaz(uf, certificado_path, senha, homologacao)
-    envio = con.consulta_nota('nfe', chave_acesso) # nfe ou nfce
-    # Supondo que 'envio.text' seja o XML retornado
+    envio = con.consulta_nota('nfe', chave_acesso)  # nfe ou nfce
     xml_string = envio.text
+    # print(xml_string)
 
-    # Parse o XML
     root = ET.fromstring(xml_string)
-
-    # Obtenha uma string legível do XML
     xml_pretty_str = ET.tostring(root, encoding='unicode', method='xml')
 
-    # Busca os elementos cStat e xMotivo
+    # Busca os elementos cStat e xMotivo usando o ET
     cstat = root.find('.//{http://www.portalfiscal.inf.br/nfe}cStat').text
     xmotivo = root.find('.//{http://www.portalfiscal.inf.br/nfe}xMotivo').text
     xml = None
-    
-    ns = {'ns':NAMESPACE_NFE}
-    prot = etree.fromstring(envio.text.encode('utf-8')) # SEFAZ SP utilizar envio.content
-    status = prot[0][0].xpath('ns:retConsSitNFe/ns:cStat', namespaces=ns)[0].text
-    
+
+    # Configurando o namespace correto
+    ns = {'ns': 'http://www.portalfiscal.inf.br/nfe'}
+
+    # Parse usando lxml
+    prot = etree.fromstring(envio.text.encode('utf-8'))
+
+    # Tentando encontrar o status da nota fiscal
+    try:
+        status = prot.xpath('//ns:retConsSitNFe/ns:cStat', namespaces=ns)[0].text
+    except IndexError:
+        # Caso não encontre, retorne uma mensagem de erro ou faça um tratamento adequado
+        status = None
+
     if status == '100':
-        prot_nfe = prot[0][0].xpath('ns:retConsSitNFe/ns:protNFe', namespaces=ns)[0]
-        xml = etree.tostring(prot_nfe, encoding='unicode')
-        print(xml)    
-        
+        try:
+            prot_nfe = prot.xpath('//ns:retConsSitNFe/ns:protNFe', namespaces=ns)[0]
+            xml = etree.tostring(prot_nfe, encoding='unicode')
+            print(xml)
+        except IndexError:
+            xml = None
+
     return cstat, xmotivo, xml
 
 def verificar_status_servico(uf, certificado_path, senha, homologacao):
@@ -420,9 +429,6 @@ class NotaFiscalConsultarView(View):
             data = json.loads(request.body.decode('utf-8'))
         except json.JSONDecodeError as e:
             return JsonResponse({'error': f'Erro ao decodificar JSON: {str(e)}'}, status=400)
-        
-        
-        print(data)
         
         # extraindo o tipo de ambiente
         tipo_ambiente = data.get('tipo_ambiente', True) 
