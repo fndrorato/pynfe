@@ -464,16 +464,33 @@ def validar_nota_fiscal(xml_doc):
     # Instanciar a classe de validação
     validacao = Validacao()    
     xsd_path = os.path.join(settings.BASE_DIR, 'nota_fiscal', 'XSDs', 'NF-e', 'nfe_v4.00.xsd')
+    
     # Validar o XML
     try:
         resultado_validacao = validacao.validar_etree(xml_doc, xsd_path, use_assert=True)
+        
         if resultado_validacao:
-            return True
+            return {"status": "sucesso", "mensagem": "XML válido."}
         else:
-            return False
+            erros = []
+            for error in validacao.error_log:
+                erros.append({
+                    "linha": error.line,
+                    "coluna": error.column,
+                    "mensagem": error.message,
+                    "tipo_erro": error.type_name
+                })
+            
+            return {
+                "status": "falha",
+                "erros": erros
+            }
+    
     except Exception as e:
-        print("Erro na validação do XML:", e)
-        return False
+        return {
+            "status": "erro",
+            "mensagem": f"Erro na validação do XML: {str(e)}"
+        }
     
 def get_info_protocolo(xml_content):
     # Converter o XML da NF-e para um dicionário

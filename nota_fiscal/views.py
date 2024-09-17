@@ -179,11 +179,31 @@ class NotaFiscalView(View):
         
         resultado_validar_nota_fiscal = validar_nota_fiscal(xml_doc)
         
-        if not resultado_validar_nota_fiscal:
+        if resultado_validar_nota_fiscal["status"] == "falha":
+            historico = salvar_historico_nota_fiscal(
+                cnpj_emitente, 
+                numero_nota_fiscal, 
+                1, 
+                resultado_validar_nota_fiscal["status"], 
+                xml_string, 
+                resultado_validar_nota_fiscal['erros'])            
             return JsonResponse({
-                'erro': 1
-                }, 
-            status=404)        
+                'erro': 1,
+                'mensagem': 'Validação falhou',
+                'detalhes': resultado_validar_nota_fiscal['erros']
+            }, status=400)  # Mudando para 400, pois 404 é mais usado para "não encontrado"
+        elif resultado_validar_nota_fiscal["status"] == "erro":
+            historico = salvar_historico_nota_fiscal(
+                cnpj_emitente, 
+                numero_nota_fiscal, 
+                1, 
+                resultado_validar_nota_fiscal["status"], 
+                xml_string, 
+                resultado_validar_nota_fiscal['mensagem'])              
+            return JsonResponse({
+                'erro': 1,
+                'mensagem': resultado_validar_nota_fiscal['mensagem']
+            }, status=500)  # Status 500 para erros no servidor      
         
         
         # quando for apenas validar o XML sem enviar
