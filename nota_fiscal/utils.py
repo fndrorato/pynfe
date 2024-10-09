@@ -258,7 +258,11 @@ def extrair_conteudo_nfe_result(xml_string):
                 if inf_prot is not None:
                     cstat_inf_prot = inf_prot.find('ret:cStat', namespaces).text
                     xmotivo_inf_prot = inf_prot.find('ret:xMotivo', namespaces).text
-                    nprot_inf_prot = inf_prot.find('ret:nProt', namespaces).text
+                    
+                    # Verificar se o nProt existe e, caso contrário, atribuir None
+                    nprot_inf_prot_elem = inf_prot.find('ret:nProt', namespaces)
+                    nprot_inf_prot = nprot_inf_prot_elem.text if nprot_inf_prot_elem is not None else None
+
                     return cstat_ret_envi, xmotivo_ret_envi, cstat_inf_prot, xmotivo_inf_prot, nrec, nprot_inf_prot
                 else:
                     return cstat_ret_envi, xmotivo_ret_envi, None, None, nrec, nprot_inf_prot

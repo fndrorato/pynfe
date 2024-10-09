@@ -1,5 +1,7 @@
+import os
 import json
 import datetime
+import time
 import xmltodict
 import xmlschema
 import re
@@ -122,6 +124,11 @@ def verificar_status_servico(uf, certificado_path, senha, homologacao):
     # print(f'Status:{status}')
     # print(f'Motivo:{motivo}')
 
+class Resposta:
+    def __init__(self, texto, status_code):
+        self.text = texto
+        self.status_code = status_code
+
 @method_decorator(csrf_exempt, name='dispatch')
 class NotaFiscalView(View):
     def get(self, request, *args, **kwargs):
@@ -219,11 +226,11 @@ class NotaFiscalView(View):
         # Ps: no modo sincrono, o retorno será o xml completo (<nfeProc> = <NFe> + <protNFe>)
         # no modo async é preciso montar o nfeProc, juntando o retorno com a NFe  
         
+                
         if envio[0] == 0:
             # print('Sucesso!')
             # print(etree.tostring(envio[1], encoding="unicode").replace('\n','').replace('ns0:','').replace(':ns0', ''))
             xml_content = etree.tostring(envio[1], encoding="unicode").replace('\n','').replace('ns0:','').replace(':ns0', '')
-
             # Montando o nome dos arquivos
             # Supondo que `emitente` e `nota_fiscal` sejam os objetos que contêm as informações necessárias
             razao_social = emitente_razao_social.split()[0]  # Primeiro nome da razão social
@@ -239,10 +246,12 @@ class NotaFiscalView(View):
             with open(caminho_arquivo, 'w', encoding='utf-8') as file:
                 file.write(xml_content)
 
+            time.sleep(2)  # Espera 2 segundos
             # # Load XML Content
-            # with open(caminho_arquivo, "r", encoding="utf8") as file:
-            #     xml_content = file.read()          
+            with open(caminho_arquivo, "r", encoding="utf8") as file:
+                xml_content_file = file.read()          
             
+            time.sleep(2)  # Espera 2 segundos
             # Converter o XML da NF-e para um dicionário
             nfe_dict = xmltodict.parse(xml_content)
 
@@ -262,11 +271,28 @@ class NotaFiscalView(View):
             # Construir a URL completa
             full_danfe_url = request.build_absolute_uri(f'/media/danfe/{danfe_nome_arquivo}')
             
-            if info_protocolo['cStat'] == 100:
+            if info_protocolo['cStat'] == '100' or info_protocolo['cStat'] == 100:
                 # Gerar o DANFE e salvar o PDF
-                danfe = Danfe(xml=xml_content)
+                danfe = Danfe(xml=xml_content_file)
                 with open(caminho_arquivo, 'wb') as pdf_file:
-                    danfe.output(caminho_arquivo)          
+                    danfe.output(caminho_arquivo)
+                
+                # Tentativas de verificar se o arquivo foi criado
+                tentativas = 0
+                max_tentativas = 3
+                while tentativas < max_tentativas:
+                    if os.path.exists(caminho_arquivo):
+                        print("PDF gerado com sucesso!")
+                        break  # Sai do loop se o arquivo for encontrado
+                    else:
+                        tentativas += 1
+                        print(f"Tentativa {tentativas}: PDF não encontrado. Tentando novamente...")
+                        time.sleep(2)  # Espera 2 segundos antes de tentar novamente
+
+                if tentativas == max_tentativas:
+                    print("Falha ao gerar o PDF após 3 tentativas.") 
+            else: 
+                print('cStat diferente de 100')        
             
             # Salvando em Nota fiscal
             chave_nota_fiscal = info_protocolo['chNFe']
