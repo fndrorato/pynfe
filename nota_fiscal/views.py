@@ -490,6 +490,8 @@ class NotaFiscalConsultarView(View):
         danfe_url = None
         numero_protocolo = None
         http_status = 404
+        
+
 
         if cStat == '100':
             http_status = 200
@@ -820,6 +822,10 @@ class NotaFiscalCancelarView(View):
         
         data_emissao = datetime.now()   
         
+        print('Entrou em cancelar de fato')
+        
+               
+        
         cancelar = EventoCancelarNota(
                 cnpj=cnpj_emitente,                                # cpf ou cnpj do emissor
                 chave=chave_acesso, # chave de acesso da nota
@@ -828,6 +834,8 @@ class NotaFiscalCancelarView(View):
                 protocolo=numero_protocolo,                                      # número do protocolo da nota
                 justificativa=justificativa
             )
+        
+        print(cancelar) 
 
         # serialização
         serializador = SerializacaoXML(_fonte_dados, homologacao=homologacao)
@@ -841,6 +849,7 @@ class NotaFiscalCancelarView(View):
         envio = con.evento(modelo='nfe', evento=xml) 
 
         xml_retorno = envio.text
+        print(xml_retorno)
         # xml_retorno = """<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><nfeResultMsg xmlns="http://www.portalfiscal.inf.br/nfe/wsdl/NFeRecepcaoEvento4"><retEnvEvento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe"><idLote>1</idLote><tpAmb>2</tpAmb><verAplic>SP_EVENTOS_PL_100</verAplic><cOrgao>35</cOrgao><cStat>128</cStat><xMotivo>Lote de Evento Processado</xMotivo><retEvento versao="1.00"><infEvento><tpAmb>2</tpAmb><verAplic>SP_EVENTOS_PL_100</verAplic><cOrgao>35</cOrgao><cStat>135</cStat><xMotivo>Evento registrado e vinculado a NF-e</xMotivo><chNFe>35240821277052000180550010000000461205931807</chNFe><tpEvento>110111</tpEvento><xEvento>Cancelamento registrado</xEvento><nSeqEvento>1</nSeqEvento><CPFDest>05692967812</CPFDest><dhRegEvento>2024-09-02T08:46:05-03:00</dhRegEvento><nProt>135240006304664</nProt></infEvento></retEvento></retEnvEvento></nfeResultMsg></soap:Body></soap:Envelope>"""
         # xml_retorno = """<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><nfeResultMsg xmlns="http://www.portalfiscal.inf.br/nfe/wsdl/NFeRecepcaoEvento4"><retEnvEvento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe"><idLote>1</idLote><tpAmb>2</tpAmb><verAplic>SP_EVENTOS_PL_100</verAplic><cOrgao>35</cOrgao><cStat>128</cStat><xMotivo>Lote de Evento Processado</xMotivo><retEvento versao="1.00"><infEvento><tpAmb>2</tpAmb><verAplic>SP_EVENTOS_PL_100</verAplic><cOrgao>35</cOrgao><cStat>155</cStat><xMotivo>Cancelamento homologado fora de prazo</xMotivo><chNFe>35240821277052000180550010000000351947416829</chNFe><tpEvento>110111</tpEvento><xEvento>Cancelamento registrado</xEvento><nSeqEvento>1</nSeqEvento><CPFDest>22213849897</CPFDest><dhRegEvento>2024-09-02T08:38:50-03:00</dhRegEvento><nProt>135240006304554</nProt></infEvento></retEvento></retEnvEvento></nfeResultMsg></soap:Body></soap:Envelope>"""
         # xml_retorno = """<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><nfeResultMsg xmlns="http://www.portalfiscal.inf.br/nfe/wsdl/NFeRecepcaoEvento4"><retEnvEvento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe"><idLote>1</idLote><tpAmb>2</tpAmb><verAplic>SP_EVENTOS_PL_100</verAplic><cOrgao>35</cOrgao><cStat>128</cStat><xMotivo>Lote de Evento Processado</xMotivo><retEvento versao="1.00"><infEvento><tpAmb>2</tpAmb><verAplic>SP_EVENTOS_PL_100</verAplic><cOrgao>35</cOrgao><cStat>222</cStat><xMotivo>Rejeição: Protocolo de Autorização de Uso difere do cadastrado</xMotivo><chNFe>35240821277052000180550010000000461205931807</chNFe><tpEvento>110111</tpEvento><nSeqEvento>1</nSeqEvento><dhRegEvento>2024-09-02T08:44:33-03:00</dhRegEvento></infEvento></retEvento></retEnvEvento></nfeResultMsg></soap:Body></soap:Envelope>"""
