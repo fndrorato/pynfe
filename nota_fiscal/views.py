@@ -865,7 +865,7 @@ class NotaFiscalCancelarView(View):
             'motivo': xMotivo,
             'xml_retorno': xml_retorno
         }  
-        return JsonResponse(data_cancelamento)
+        # return JsonResponse(data_cancelamento)
         cancelamento = salvar_cancelamento(data_cancelamento)        
         
         http_status = 404
