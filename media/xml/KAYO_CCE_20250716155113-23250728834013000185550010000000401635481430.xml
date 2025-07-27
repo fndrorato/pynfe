@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><procEventoNFe versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe"><evento xmlns="http://www.portalfiscal.inf.br/nfe" versao="1.00">
+  <infEvento Id="ID1101102325072883401300018555001000000040163548143002">
+    <cOrgao>23</cOrgao>
+    <tpAmb>1</tpAmb>
+    <CNPJ>28834013000185</CNPJ>
+    <chNFe>23250728834013000185550010000000401635481430</chNFe>
+    <dhEvento>2025-07-16T15:51:12-03:00</dhEvento>
+    <tpEvento>110110</tpEvento>
+    <nSeqEvento>2</nSeqEvento>
+    <verEvento>1.00</verEvento>
+    <detEvento versao="1.00">
+      <descEvento>Carta de Correcao</descEvento>
+      <xCorrecao>NO CAMPO DESCRICAO, A descricao do produto completa e: Cama hospitalar American FIR 1,93 x 2,03 com Vibro massageador eletronico</xCorrecao>
+      <xCondUso>A Carta de Correcao e disciplinada pelo paragrafo 1o-A do art. 7o do Convenio S/N, de 15 de dezembro de 1970 e pode ser utilizada para regularizacao de erro ocorrido na emissao de documento fiscal, desde que o erro nao esteja relacionado com: I - as variaveis que determinam o valor do imposto tais como: base de calculo, aliquota, diferenca de preco, quantidade, valor da operacao ou da prestacao; II - a correcao de dados cadastrais que implique mudanca do remetente ou do destinatario; III - a data de emissao ou de saida.</xCondUso>
+    </detEvento>
+  </infEvento>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+      <Reference URI="#ID1101102325072883401300018555001000000040163548143002">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+          <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+        <DigestValue>ON8SoDhB+voD8HdeVT6H+KKLln0=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>Azv0M2nQcd9x074g5+rQ+zwVSb4U9tUcFcukTiin8f+NyEz3XPbF2EoR36bRIirfdogLevg8Ykme43fjXJ7aLGgOPMlBblBYL/roAvQJMGoLmBPJxnMzdN8mPbS54mJdUnbhUfnsKsHQJYeN+euLpKCn/pvbHR7/yoFzQ97VJAJpum/c4fdZAAaVhy83WQpdBoRP8YJbwodhkDEgiXJAUgw8R9l63MzY3LoXEtkl7MvJvsjAAIme8ZCwWAzrRmNCB7BHpQ/4H+0apFa9j0PeKQxQx6wJpVSs0RRrgmv4o4DqIXwcPbfXceX7mek9lqMazd0Oms8SkPAHo/qsUPXx2g==</SignatureValue>
+    <KeyInfo>
+      <X509Data>
+        <X509Certificate>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</X509Certificate>
+      </X509Data>
+    </KeyInfo>
+  </Signature>
+</evento>
+<ns0:retEvento xmlns:ns0="http://www.portalfiscal.inf.br/nfe" versao="1.00"><ns0:infEvento><ns0:tpAmb>1</ns0:tpAmb><ns0:verAplic>SVRS2507160740DR</ns0:verAplic><ns0:cOrgao>23</ns0:cOrgao><ns0:cStat>135</ns0:cStat><ns0:xMotivo>Evento registrado e vinculado a NF-e</ns0:xMotivo><ns0:chNFe>23250728834013000185550010000000401635481430</ns0:chNFe><ns0:tpEvento>110110</ns0:tpEvento><ns0:nSeqEvento>2</ns0:nSeqEvento><ns0:dhRegEvento>2025-07-16T15:51:13-03:00</ns0:dhRegEvento><ns0:nProt>223250070238868</ns0:nProt></ns0:infEvento></ns0:retEvento></procEventoNFe>

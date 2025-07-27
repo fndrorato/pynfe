@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-uenvo#w1kw(a*0q#ct=jd+t2@wfn617nj984@=)xv6n&7xdmqf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['nfemanager.f5sys.com.br', '127.0.0.1']
+ALLOWED_HOSTS = ['nfemanager.f5sys.com.br', '127.0.0.1', 'localhost', 'nfemanager2.f5sys.com.br', '138.197.113.144']
 
 
 # Application definition

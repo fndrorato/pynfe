@@ -124,7 +124,7 @@ def salvar_cancelamento(data):
         # Cria uma nova instância de CartaCorrecao com os parâmetros recebidos
         nota_cancelada = NotaCancelada(
             cnpj=certificado,
-            chave_nota_Fiscal=chave,
+            chave_nota_fiscal=chave,
             data_emissao=timezone.now(),            
             protocolo=data['numero_protocolo'],
             justificativa=data['justificativa'],

@@ -1,0 +1,10 @@
+services:
+
+  nfe_web:
+    build: .  # Dockerfile deve estar na mesma pasta
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app  # mapeia todo o projeto para dentro do container
+      - ./media:/app/media        # garante persistência da pasta media

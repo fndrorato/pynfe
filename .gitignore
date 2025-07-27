@@ -3,8 +3,8 @@ __pycache__/
 *.pyc
 logs/
 .env
-media/certificados/
-media/danfe/
-media/xml/
+# media/certificados/
+# media/danfe/
+# media/xml/
 static/
-db.sqlite3
+# db.sqlite3

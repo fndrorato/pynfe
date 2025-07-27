@@ -865,6 +865,7 @@ class NotaFiscalCancelarView(View):
             'motivo': xMotivo,
             'xml_retorno': xml_retorno
         }  
+
         cancelamento = salvar_cancelamento(data_cancelamento)        
         
         http_status = 404
