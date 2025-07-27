@@ -7,13 +7,16 @@ ENV PYTHONUNBUFFERED 1
 
 # Pode ser alterado para o nome que desejar
 # mas também pode ser /app OU /sge
-WORKDIR /sge
+WORKDIR /app
 
 # copiou todos os arquivos do diretório atual para o diretório /sge
 COPY . .
 
 # Instalando as dependências do projeto
-RUN pip install --upgrade pip
+# RUN pip install --upgrade pip
+# RUN pip install -r requirements.txt
+
+RUN python -m pip install --upgrade pip --no-cache-dir
 RUN pip install -r requirements.txt
 
 # Sempre executar o migrate antes de iniciar o servidor
