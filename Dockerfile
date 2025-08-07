@@ -13,11 +13,9 @@ WORKDIR /app
 COPY . .
 
 # Instalando as dependências do projeto
-# RUN pip install --upgrade pip
-# RUN pip install -r requirements.txt
-
-RUN python -m pip install --upgrade pip --no-cache-dir
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+
 
 # Sempre executar o migrate antes de iniciar o servidor
 # RUN python manage.py migrate

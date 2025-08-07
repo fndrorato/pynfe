@@ -3,6 +3,7 @@ services:
   nfe_web:
     build: .  # Dockerfile deve estar na mesma pasta
     restart: always
+    container_name: nfe-api
     ports:
       - "8000:8000"
     volumes:
