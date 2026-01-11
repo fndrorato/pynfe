@@ -11,7 +11,8 @@ services:
       - "8000"
 
     volumes:
-      - pynfe_shared_media:/app/media
+      # ALTERAÇÃO: usar o mesmo bind mount
+      - /opt/nfemanager/media:/app/media
 
     environment:
       - VIRTUAL_HOST=nfemanager.f5sys.com.br
@@ -24,6 +25,3 @@ services:
 networks:
   api-oficial_new_n8n_net:
     external: true
-
-volumes:
-  pynfe_shared_media:
