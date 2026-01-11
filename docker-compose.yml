@@ -12,7 +12,7 @@ services:
 
     volumes:
       # ALTERAÇÃO: usar o mesmo bind mount
-      - /opt/nfemanager/media:/app/media
+      - /app/pynfe/media:/app/media
 
     environment:
       - VIRTUAL_HOST=nfemanager.f5sys.com.br
