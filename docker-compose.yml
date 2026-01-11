@@ -18,3 +18,10 @@ services:
       - VIRTUAL_HOST=nfemanager.f5sys.com.br
       - LETSENCRYPT_HOST=nfemanager.f5sys.com.br
       - LETSENCRYPT_EMAIL=seu@email.com
+
+    networks:
+      - api-oficial_new_n8n_net
+
+networks:
+  api-oficial_new_n8n_net:
+    external: true
