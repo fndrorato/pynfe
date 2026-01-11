@@ -27,5 +27,5 @@ networks:
     external: true
 
 volumes:
-  pynfe_media:
+  new_nginx_html:
     external: true
