@@ -12,7 +12,7 @@ services:
 
     volumes:
       - .:/app
-      - new_nginx_html:/usr/share/nginx/html
+      - shared_media:/usr/share/nginx/html
 
     environment:
       - VIRTUAL_HOST=nfemanager.f5sys.com.br
@@ -27,5 +27,4 @@ networks:
     external: true
 
 volumes:
-  new_nginx_html:
-    external: true
+  shared_media:
