@@ -4,8 +4,19 @@ services:
     build: .  # Dockerfile deve estar na mesma pasta
     restart: always
     container_name: nfe-api
+    environment:
+      - VIRTUAL_HOST=nfemanager.f5sys.com.br
+      - VIRTUAL_PORT=8000
+      - LETSENCRYPT_HOST=nfemanager.f5sys.com.br
     ports:
       - "8080:8000"
     volumes:
       - .:/app  # mapeia todo o projeto para dentro do container
       - ./media:/app/media        # garante persistência da pasta media
+    networks:
+      - default
+      - proxy-tier
+
+networks:
+  proxy-tier:
+    external: true
