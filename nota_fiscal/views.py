@@ -894,3 +894,69 @@ class NotaFiscalSendEmailView(View):
         resultado = email_sender.send_nota_fiscal_email()
         return resultado                
 
+@method_decorator(csrf_exempt, name='dispatch')
+class NotaFiscalInutilizarView(View):
+    def post(self, request, *args, **kwargs):
+        try:
+            data = json.loads(request.body.decode('utf-8'))
+        except json.JSONDecodeError as e:
+            return JsonResponse({'error': f'Erro ao decodificar JSON: {str(e)}'}, status=400)
+        
+        # extraindo os dados
+        tipo_ambiente = data.get('tipo_ambiente', True) 
+        cnpj_emitente = data.get('cnpj', '')
+        ano = data.get('ano', '')
+        modelo = data.get('modelo', '')
+        serie = data.get('serie', '')
+        numero_inicial = data.get('numero_inicial', '')
+        numero_final = data.get('numero_final', '')
+        justificativa = data.get('justificativa', '')
+        
+        if tipo_ambiente == 1:
+            homologacao = False
+        else:
+            homologacao = True  
+            
+        # Buscar o Certificado pelo CNPJ do emitente
+        try:
+            certificado = Certificado.objects.get(cnpj=cnpj_emitente)
+        except Certificado.DoesNotExist:
+            return JsonResponse({'error': 'Certificado não encontrado'}, status=404)
+
+        uf_emitente = certificado.uf
+        validade_certificado, message_validade = consulta_cadastro(certificado.file.name, cnpj_emitente, certificado.password, uf_emitente, homologacao)
+        
+        if not validade_certificado:
+            return JsonResponse({'error': message_validade}, status=404)
+
+        certificado_path = Path(settings.MEDIA_ROOT) / certificado.file.name
+        senha = certificado.password                  
+        
+        data_emissao = datetime.now()   
+
+        con = ComunicacaoSefaz(uf_emitente, certificado_path, senha, homologacao)
+        try:
+            envio = con.inutilizacao(
+                modelo='nfe',                                # nfe ou nfce
+                cnpj=cnpj_emitente,                       # cnpj do emitente
+                numero_inicial=numero_inicial,                            # Número da NF-e inicial a ser inutilizada
+                numero_final=numero_final,                              # Número da NF-e final a ser inutilizada
+                justificativa=justificativa,    # Informar a justificativa do pedido de inutilização (min 15 max 255)
+                ano=ano,                                    # Informação facultativa
+                serie=serie)                                 # Informação facultativa
+
+            print('--- Inutilização ---')
+            print(envio)
+            xml_retorno = envio.text
+            print('--- XML Retorno Inutilização ---')
+            print(xml_retorno)  
+            
+            return JsonResponse({
+                'message': 'Inutilização processada com sucesso.'
+                }, 
+            status=200)
+
+        except Exception as e:
+            return JsonResponse({'error': f'Erro ao processar inutilização: {str(e)}'}, status=404)
+          
+        

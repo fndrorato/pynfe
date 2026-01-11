@@ -1,0 +1,31 @@
+# Django & Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
+venv
+.env
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+.tox
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git
+.gitignore
+.mypy_cache
+pytest_cache
+.pytest_cache
+
+# Banco de Dados (Garante que a imagem não tenha uma cópia antiga do banco)
+db.sqlite3
+
+# Mídia (Garante que a imagem não fique gigante com arquivos de upload)
+media/
