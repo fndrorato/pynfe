@@ -16,6 +16,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['nfemanager.f5sys.com.br', '127.0.0.1', 'localhost', 'nfemanager2.f5sys.com.br', '138.197.113.144']
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://nfemanager.f5sys.com.br",
+]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Application definition
 
@@ -127,3 +132,5 @@ EMAIL_HOST_USER = 'contato@f5sys.com.br'
 EMAIL_HOST_PASSWORD = 'ic3h@wkk'
 DEFAULT_FROM_EMAIL = 'contato@f5sys.com.br'
 
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
