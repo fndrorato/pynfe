@@ -12,7 +12,7 @@ services:
 
     volumes:
       - .:/app
-      - pynfe_media:/app/media
+      - new_nginx_html:/usr/share/nginx/html
 
     environment:
       - VIRTUAL_HOST=nfemanager.f5sys.com.br

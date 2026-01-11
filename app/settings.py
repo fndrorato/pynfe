@@ -116,8 +116,11 @@ STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # CONFIGURACAO PARA TRABALHAR COM OS CERTIFICADOS
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = "/usr/share/nginx/html/media"
 MEDIA_URL = '/media/'
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
