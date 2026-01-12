@@ -13,6 +13,7 @@ services:
     volumes:
       # ALTERAÇÃO: usar o mesmo bind mount
       - /app/pynfe/media:/app/media
+      - /app/pynfe/db.sqlite3:/app/db.sqlite3 
 
     environment:
       - VIRTUAL_HOST=nfemanager.f5sys.com.br
