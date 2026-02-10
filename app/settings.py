@@ -129,13 +129,23 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.umbler.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.umbler.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'contato@f5sys.com.br'
+# EMAIL_HOST_PASSWORD = 'ic3h@wkk'
+# DEFAULT_FROM_EMAIL = 'contato@f5sys.com.br'
+
+EMAIL_BACKEND = 'app.email_backend.EmailBackend'
+EMAIL_HOST = 'smtp.titan.email'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
 EMAIL_HOST_USER = 'contato@f5sys.com.br'
 EMAIL_HOST_PASSWORD = 'ic3h@wkk'
 DEFAULT_FROM_EMAIL = 'contato@f5sys.com.br'
+EMAIL_TIMEOUT = 10
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
