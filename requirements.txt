@@ -24,3 +24,4 @@ sqlparse==0.5.1
 urllib3==2.2.2
 xmlschema==3.3.2
 xmltodict==0.13.0
+whitenoise
