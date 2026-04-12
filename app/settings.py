@@ -117,9 +117,9 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # CONFIGURACAO PARA TRABALHAR COM OS CERTIFICADOS
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-#MEDIA_ROOT = "/usr/share/nginx/html/media"
-MEDIA_ROOT = "/app/media"
+# Em produção (Docker), define MEDIA_ROOT=/app/media via variável de ambiente.
+# Em desenvolvimento, usa o path relativo ao projeto.
+MEDIA_ROOT = os.environ.get('MEDIA_ROOT', os.path.join(BASE_DIR, 'media'))
 MEDIA_URL = '/media/'
 
 

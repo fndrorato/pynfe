@@ -16,6 +16,7 @@ services:
       - /app/pynfe/db.sqlite3:/app/db.sqlite3 
 
     environment:
+      - MEDIA_ROOT=/app/media
       - VIRTUAL_HOST=nfemanager.f5sys.com.br
       - LETSENCRYPT_HOST=nfemanager.f5sys.com.br
       - LETSENCRYPT_EMAIL=seu@email.com

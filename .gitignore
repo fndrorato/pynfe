@@ -7,4 +7,7 @@ logs/
 # media/danfe/
 # media/xml/
 static/
-# db.sqlite3
+db.sqlite3
+*.DS_Store
+*.pdf
+*.xml

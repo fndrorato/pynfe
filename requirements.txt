@@ -25,3 +25,4 @@ urllib3==2.2.2
 xmlschema==3.3.2
 xmltodict==0.13.0
 whitenoise
+whitenoise==6.12.0
